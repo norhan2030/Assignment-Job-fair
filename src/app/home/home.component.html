@@ -1,0 +1,51 @@
+
+
+
+<div class="m-5" id="divpiechart"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-3">
+        <nav class="navbar navbar-light bg-light w-75 m-auto">
+        
+            <div class="input-group p-2">
+              
+              <input type="text" class="form-control search" [(ngModel)]="searchInput" (ngModelChange)="filterTransactionsByNameOrAmount()" placeholder="Search by name or amount" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        
+        </nav>
+    </div>
+    </div>
+    <div class="col-md-12">
+      
+      <table class="table w-100 " id="tt">
+        <thead class="theadBorder w-100 ">
+          <tr class="">
+            <th scope="col">Id</th>
+            <th scope="col">Username</th>
+            <th scope="col">Transactions Date</th>
+            <th scope="col">Amount</th>
+
+            <!-- <th scope="col">&nbsp;</th> -->
+          </tr>
+        </thead>
+        <tbody class="w-100">
+          <tr class="tr-border" *ngFor="let customer of DisplayData()" >
+            <td scope="row" >{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td >
+                <span *ngFor="let transaction of TransactionsById(customer.id)" class=" mr-3 d-block">{{ transaction.date }}</span>
+            </td>
+            <td>
+                <span *ngFor="let transaction of TransactionsById(customer.id)" class=" mr-3 d-block">{{ transaction.amount }}</span>
+            </td>
+            <td><button class="btn btn-outline-primary " (click)="chartById(customer.id)">Show Chart</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
