@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit{
     } 
   }
   DisplayData(): any[] {
-    console.log(this.filteredCustomerNames)
     if (this.filteredCustomerNames.length!=0) {
       return this.filteredCustomerNames;
     }else if(this.result.length!=0){

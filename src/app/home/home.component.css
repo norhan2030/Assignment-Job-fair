@@ -9,7 +9,14 @@ table {
   height: 500px !important;
   overflow-y: scroll !important;
 }
-
+h3{margin-top: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  background-image:linear-gradient(to bottom left, #e4def5, #444aef);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
 .theadBorder{
 border-bottom: 4px solid #eceffa !important;
 
@@ -27,21 +34,38 @@ td{
 th{
   padding: 20px 5px !important;
 }
-
-/* td button.btn{
-  color: aliceblue !important;
-  background-color: #f56b4c !important;
+td button.btn{
+  font-weight: 700;
+  background-image:linear-gradient(to bottom left, #e4def5, #444aef);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 td button.btn:hover{
-  color: #f56b4c !important;
-  border:1px solid #f56b4c !important;
-  background-color: #fff !important ;
+  /* background-image:linear-gradient(to bottom left, #e4def5, #444aef);
+  color: transparent;
+  background-color: #444aef !important;
+  color: #fff !important; */
+  background-image:linear-gradient(to bottom left, #e4def5, #444aef);
+
+ 
+  box-shadow: 4px 5px 20px 4px  hsl(238, 84%, 60%,.7);
+  transition: background-image .3s linear;
+  transition: box-shadow .3s linear;
+}
+
+.search:focus{
+outline:  #444aef !important;
 }
 th{
   padding: 20px 5px !important;
-  color: #FF5733 !important;
+  background-image:linear-gradient(to bottom left, #e4def5, #444aef);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
 
-} */
+
 @media (max-width: 767px) {
   td{
     padding: 20px 0px  !important;
