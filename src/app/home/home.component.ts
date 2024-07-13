@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit{
   filteredCustomerNames: string[] = [];
   filteredTransactionAmount:string []=[]
   result:any []=[];
-  FinalResult:any []=[] ;
   newTransactions:any []=[]
   dates:any []=[]
   amounts:any []=[]
@@ -23,10 +22,10 @@ export class HomeComponent implements OnInit{
   ngOnInit():void{
     google.charts.load('current', {packages: ['corechart']});
     this._UserService.getUsers().subscribe({
-      next:(res)=>this.customers = res,
+      next:(response)=>this.customers = response,
     });
     this._UserService.getTransactions().subscribe({
-      next:(res)=>this.transactions = res,
+      next:(response)=>this.transactions = response,
 
     });
   }
@@ -39,9 +38,7 @@ export class HomeComponent implements OnInit{
     this.result=[]
     if( +this.searchInput){
       const searchTerm = +this.searchInput
-      this.filteredTransactionAmount = this.transactions
-        .filter(transaction => transaction.amount == searchTerm)
-        .map(transaction => transaction.customer_id);
+      this.filteredTransactionAmount = this.transactions.filter(transaction => transaction.amount == searchTerm).map(transaction => transaction.customer_id);
       this.filteredTransactionAmount.map(transition =>{
       this.result=this.customers.filter(customer => customer.id == transition).map(transaction => transaction);})
     }else {
@@ -67,11 +64,9 @@ export class HomeComponent implements OnInit{
     }
   }
   chartById(id:number){
-  this.FinalResult=this.customers.filter(customer => customer.id == id).map(transaction => transaction.id)
-  this.FinalResult.map(transition =>{
-    this.newTransactions=this.transactions
-    .filter(customer => customer.customer_id == transition)
-    .map(transaction => transaction);})
+  this.newTransactions=this.transactions
+  .filter(customer => customer.customer_id == id)
+  .map(transaction => transaction)
   this.dates=this.newTransactions.map(transaction=>transaction.date)
   this.amounts=this.newTransactions.map(transaction=>transaction.amount)
   this.Data=this.newTransactions
